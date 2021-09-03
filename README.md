@@ -1,6 +1,9 @@
 # eWPTX
 List of useful commands for web penetration testing and eWPTX certification
 
+## XSS
+coming soon
+
 ## SQLi
 
 ### MSSQL
@@ -93,3 +96,6 @@ THEN 0x61 ELSE 0x28 END))
 * Encode query in base64
 * Double-encode query in base64
 * Use HEX conversion 
+
+## XXE
+coming soon
