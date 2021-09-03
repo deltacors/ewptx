@@ -3,6 +3,12 @@ List of useful commands for web penetration testing and eWPTX certification
 
 ## SQLi
 
+### MSSQL
+cooming soon
+
+### Oracle
+cooming soon
+
 ### MySQL
 
 **List database name**
