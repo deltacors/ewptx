@@ -63,7 +63,7 @@ SELECT column_name FROM ALL_TAB_COLUMNS;-- -
 **List the current user**
 
 ```
-SELECT loginame FROM SYSPROCESS WHERE spied = @@SPID;-- -
+SELECT loginame FROM SYSPROCESSES WHERE spid = @@SPID;-- -
 ```
 
 **List all users**
