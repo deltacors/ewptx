@@ -37,6 +37,15 @@ The Access-control-allow-credentials: true header must be implemented too.
 
 ## Deserialization
 
+## LDAP Injection
+Lightweight Directory Access Protocol is a protocol used to modify and query directory services over TCP/IP.
+Example:
+
+```
+?q=(|(sn=a*)(cn=b*))
+```
+The first OR operator (|) is used in order to indicate that we either look for all records which surname starts with "a" or canonical name starts with "b".
+
 ## SSRF
 
 ## XSLT
