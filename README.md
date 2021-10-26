@@ -1,3 +1,23 @@
+# Table of contents
+- Encoding and Filtering
+- Evasion Basic
+- XSS
+- XSS - WAF bypass
+- CSRF
+- HTML5
+- SQLi
+- SQli - WAF evasion
+- XXE / XPath
+- PHP/Java/.NET deserialization
+- SSRF
+- XSLT
+- Crypto
+- Attack SSO / OAuth
+- Attack API / Null Origin Exploitation
+- Attack LDAP
+- Insecure RMI
+
+
 # eWPTX
 List of useful commands for web penetration testing and eWPTX certification
 
