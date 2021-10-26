@@ -40,6 +40,40 @@ The Access-control-allow-credentials: true header must be implemented too.
 ## SSRF
 
 ## XSLT
+XSLT (Extensible Stylesheet Language Transformations) is a language used in XML document transformations.
+The XSL document has an XML-like structure and defines how another XML file should be transformed.
+The transformation of an user controlled XML transform this:
+
+```
+<?xml version="1.0" ?>
+<fruits>
+  <fruit>
+    <name>Lemon</name>
+    <description>Yellow and sour</description>
+  </fruit>
+  <fruit>
+    <name>Watermelon</name>
+    <description>Round, green outside, red inside</description>
+  </fruit>
+</fruits>
+```
+To this:
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:template match="/fruits">
+    Fruits:
+    <!-- Loop for each fruit -->
+    <xsl:for-each select="fruit">
+      <!-- Print name: description -->
+      - <xsl:value-of select="name"/>: <xsl:value-of select="description"/>
+    </xsl:for-each>
+  </xsl:template>
+</xsl:stylesheet>
+```
+
+To exploit this kind of vulnerabilities the user must have the possibility of controlling the XLS file, in order to change the output and eventually read sensitive files or execute system commands.
 
 ## Insecure RMI
 
