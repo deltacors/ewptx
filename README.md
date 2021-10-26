@@ -6,7 +6,7 @@
 - CSRF
 - HTML5
 - SQLi
-- SQli - WAF evasion
+- SQLi - WAF evasion
 - XXE / XPath
 - PHP/Java/.NET deserialization
 - SSRF
