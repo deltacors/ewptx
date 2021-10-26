@@ -1,3 +1,6 @@
+# eWPTX
+List of useful commands for web penetration testing and eWPTX certification
+
 # Table of contents
 - Encoding and Filtering
 - Evasion Basic
@@ -17,9 +20,28 @@
 - Attack LDAP
 - Insecure RMI
 
+## HTML5
 
-# eWPTX
-List of useful commands for web penetration testing and eWPTX certification
+### CORS
+New specification introduced in order to relax the SOP (Same Origin Policy)
+Similar to Flash and Silverlight, but instead of XML config files it uses a set of HTTP headers:
+
+- Access-Control-Allow-Origin: indicates wheather the response can be shared with requesting code from the given origin. Possible value are: 
+    - * -> For requests without credentials, the value tells browser to allow requesting code from any origin to access resources.
+    - origin -> Specifies an origin. Only a single origin can be specified.
+    - null 
+
+The CORS misconfiguration allow one host A to access data from another host B.
+Sending a malicious link to a victim, that hosts a XHR script that requests some sensitive information, allows the attacker to steal cookies or API keys.
+The Access-control-allow-credentials: true header must be implemented too.
+
+## Deserialization
+
+## SSRF
+
+## XSLT
+
+## Insecure RMI
 
 ## XSS
 Possibile evasion methods
